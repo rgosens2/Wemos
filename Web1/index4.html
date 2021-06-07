@@ -35,11 +35,6 @@
 				refreshSwatch();
 				sendValues();
 			});
-			function HighlightColorRed(slider) {
-				var theVal = slider.val();
-				var color = "#" + Number(theVal).toString(16) + "0000";           
-				slider.closest(".ui-slider").find(".ui-slider-bg").css("background-color", color);        
-			}
 			
 			// Green
 			HighlightColorGreen($("#slider-2")); // call once on page create
@@ -48,11 +43,6 @@
 				refreshSwatch();
 				sendValues();
 			});
-			function HighlightColorGreen(slider) {
-				var theVal = slider.val();
-				var color = "#00" + Number(theVal).toString(16) + "00";           
-				slider.closest(".ui-slider").find(".ui-slider-bg").css("background-color", color);        
-			}
 			
 			// Blue
 			HighlightColorBlue($("#slider-3")); // call once on page create
@@ -61,11 +51,6 @@
 				refreshSwatch();
 				sendValues();
 			});
-			function HighlightColorBlue(slider) {
-				var theVal = slider.val();
-				var color = "#0000" + Number(theVal).toString(16) + "";           
-				slider.closest(".ui-slider").find(".ui-slider-bg").css("background-color", color);        
-			}
 			
 			// Brightness
 			HighlightColorBright($("#slider-4")); // call once on page create
@@ -74,13 +59,36 @@
 				//refreshSwatch(); // do change swatch for brightness
 				sendValues();
 			});
-			function HighlightColorBright(slider) {
-				var theVal = slider.val();
-				var color = "#" + Number(theVal).toString(16) + Number(theVal).toString(16) + Number(theVal).toString(16) + "";           
-				slider.closest(".ui-slider").find(".ui-slider-bg").css("background-color", color);        
-			}
 			
 		});
+		
+		
+		// For updating slider colors
+		function HighlightColorRed(slider) {
+			var theVal = slider.val();
+			var color = "#" + Number(theVal).toString(16) + "0000";           
+			slider.closest(".ui-slider").find(".ui-slider-bg").css("background-color", color);        
+		}
+		
+		
+		function HighlightColorGreen(slider) {
+			var theVal = slider.val();
+			var color = "#00" + Number(theVal).toString(16) + "00";           
+			slider.closest(".ui-slider").find(".ui-slider-bg").css("background-color", color);        
+		}
+			
+		function HighlightColorBlue(slider) {
+			var theVal = slider.val();
+			var color = "#0000" + Number(theVal).toString(16) + "";           
+			slider.closest(".ui-slider").find(".ui-slider-bg").css("background-color", color);        
+		}		
+		
+		function HighlightColorBright(slider) {
+			var theVal = slider.val();
+			var color = "#" + Number(theVal).toString(16) + Number(theVal).toString(16) + Number(theVal).toString(16) + "";           
+			slider.closest(".ui-slider").find(".ui-slider-bg").css("background-color", color);        
+		}
+			
 		
 		
 		// Swatch
@@ -139,6 +147,13 @@
 			$("#slider-1").val(redValue).slider("refresh");
 			$("#slider-2").val(greenValue).slider("refresh");
 			$("#slider-3").val(blueValue).slider("refresh");
+			
+			// update slider colors
+			HighlightColorRed($("#slider-1"));
+			HighlightColorGreen($("#slider-2"));
+			HighlightColorBlue($("#slider-3"));
+			
+			 
 			
 		
 			var url = "http://192.168.1.81/rgb?r="+pad(redValue,3)+"&g="+pad(greenValue,3)+"&b="+pad(blueValue,3)+"&h="+pad(brightnessValue,3);
